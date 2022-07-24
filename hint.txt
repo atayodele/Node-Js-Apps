@@ -1,0 +1,41 @@
+//  using npm
+run the command on ur project terminal
+    - npm init // to install npm in our project
+    - Goto www.npmjs.com to search for list for npm u need
+        E.g validator
+    - npm i validator@13.7.0 //add the current version 
+
+    argv  => means arguement vector in node js
+EXPRESS JS
+    visit expressjs.com
+    - create a new folder call it web-server
+    - npm init -y
+    - npm i express --save
+    - create a sub-directory, call it src    
+    - create a file inside src, call it app.js
+    - npm i hbs or handlebars //Express.js library template engine plugin for Handlebars for views
+
+GIT
+    Set up SSH keys
+    - ssh-keygen
+    - press another for deault route name to save on ur system
+    - input ur desired password
+    - Goto C: program to check newly ssh created
+    - Open new with path wia ssh been saved
+    - ls
+    - cat id_rsa.pub
+    - Copy the ssh key generated to ur github, SSH AND GPG keys, git it a name and paste the ssh key generated and save
+    - ssh -T git@github.com, Press yes
+    - input ur passphase
+Deploy to HEROKU
+    - heroku keys:add, press yes
+    - heroku create mead-weather-application
+    - Goto package.json file to set where heroku to pick application to deploy,
+    - Edit the scripts in json object
+After that goto terminal and run this command
+    - npm run start
+    - After goto app.js to set the environment variable of port 
+    - commit your code and push to github
+To deploy use this command
+    - git push heroku master
+    

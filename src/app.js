@@ -5,7 +5,7 @@ const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -56,6 +56,8 @@ app.get('/weather', (req, res) => {
             error: 'You must provide an address!'
         })
     }
+    console.log("Fetch weather from api...")
+    console.log("It might not work since the Apikey has expired!")
 
     geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
         if (error) {
