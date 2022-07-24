@@ -3,6 +3,7 @@ const express = require('express')
 const hbs = require('hbs')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
+const alert = require('alert')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -56,26 +57,27 @@ app.get('/weather', (req, res) => {
             error: 'You must provide an address!'
         })
     }
-    console.log("Fetch weather from api...")
+    alert("Unable to fetch data from the server because the Apikey has expired!")
     console.log("It might not work since the Apikey has expired!")
+    console.log('Unable to fetch data from the server!')
+    
+    // geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
+    //     if (error) {
+    //         return res.send({ error })
+    //     }
 
-    geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
-        if (error) {
-            return res.send({ error })
-        }
+    //     forecast(latitude, longitude, (error, forecastData) => {
+    //         if (error) {
+    //             return res.send({ error })
+    //         }
 
-        forecast(latitude, longitude, (error, forecastData) => {
-            if (error) {
-                return res.send({ error })
-            }
-
-            res.send({
-                forecast: forecastData,
-                location,
-                address: req.query.address
-            })
-        })
-    })
+    //         res.send({
+    //             forecast: forecastData,
+    //             location,
+    //             address: req.query.address
+    //         })
+    //     })
+    // })
 })
 
 app.get('/products', (req, res) => {
