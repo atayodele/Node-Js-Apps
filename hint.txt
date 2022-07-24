@@ -14,6 +14,7 @@ EXPRESS JS
     - create a sub-directory, call it src    
     - create a file inside src, call it app.js
     - npm i hbs or handlebars //Express.js library template engine plugin for Handlebars for views
+    - npm install nodemon
 
 GIT
     Set up SSH keys
