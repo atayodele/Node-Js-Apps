@@ -50,4 +50,4 @@ MONGO DB
     - npm i mongodb
     - Use the link below for updating data in mongo db
         - https://www.mongodb.com/docs/manual/reference/operator/update/
-    - 
+    -   - https://mongoosejs.com/docs/queries.html ===> FOR DB QUERIES
