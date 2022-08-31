@@ -39,4 +39,15 @@ After that goto terminal and run this command
     - commit your code and push to github
 To deploy use this command
     - git push heroku master
-    
+
+MONGO DB
+    - www.mongodb.com
+    - click on community server, its free
+    - https://www.mongodb.com/docs/drivers/ ==> To get list of drivers for Mongo DB API documentation
+    - https://mongodb.github.io/node-mongodb-native/4.8/ ==> driver for node
+    - Create a new project folder, call it task-manager
+    - npm init -y
+    - npm i mongodb
+    - Use the link below for updating data in mongo db
+        - https://www.mongodb.com/docs/manual/reference/operator/update/
+    - 
