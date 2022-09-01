@@ -50,4 +50,7 @@ MONGO DB
     - npm i mongodb
     - Use the link below for updating data in mongo db
         - https://www.mongodb.com/docs/manual/reference/operator/update/
-    -   - https://mongoosejs.com/docs/queries.html ===> FOR DB QUERIES
+        - https://mongoosejs.com/docs/queries.html ===> FOR DB QUERIES
+    - npm i bcryptjs        // to encrypt password or sensitive data
+    - npm i jsonwebtoken    // to make use of jwt web token
+    
