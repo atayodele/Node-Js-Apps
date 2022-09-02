@@ -50,7 +50,11 @@ MONGO DB
     - npm i mongodb
     - Use the link below for updating data in mongo db
         - https://www.mongodb.com/docs/manual/reference/operator/update/
-        - https://mongoosejs.com/docs/queries.html ===> FOR DB QUERIES
+        - https://mongoosejs.com/docs/queries.html  ===> FOR DB QUERIES
+        - https://regex101.com                      ===> for reqular expressions
     - npm i bcryptjs        // to encrypt password or sensitive data
     - npm i jsonwebtoken    // to make use of jwt web token
+    - npm i multer          // multi path upload of file
+    - npm i sharp          // resize images and change the format
+    - npm i env-cmd --save-dev       // for app to see environment variable
     
