@@ -57,4 +57,18 @@ MONGO DB
     - npm i multer          // multi path upload of file
     - npm i sharp          // resize images and change the format
     - npm i env-cmd --save-dev       // for app to see environment variable
-    
+
+TESTING IN NODE JS
+    Using Jest Framework
+    - Goto jestjs.io
+    - Goto mochajs.io
+    - npm i jest --save-dev
+    - Goto package.json and add jest under script
+        E.g. "scripts": {
+                    "start": "node src/index.js",
+                    "dev": "env-cmd ./config/dev.env nodemon src/index.js",
+                    "test": "jest"
+                },
+    - Add a new directory/folder outside src, call it tests or any name of ur choice
+        - add a file inside the folder,call it math.test.js     ==> to test for our math expressions
+    - npm i supertest --save-dev      // to test an express application
