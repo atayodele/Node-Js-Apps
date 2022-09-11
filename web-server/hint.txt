@@ -72,3 +72,7 @@ TESTING IN NODE JS
     - Add a new directory/folder outside src, call it tests or any name of ur choice
         - add a file inside the folder,call it math.test.js     ==> to test for our math expressions
     - npm i supertest --save-dev      // to test an express application
+
+SWAGGER IN NODE JS
+    - npm i swagger-jsdoc swagger-ui-express -s
+    

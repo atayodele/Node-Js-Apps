@@ -1,0 +1,2 @@
+This is what we know about avocado: When you pipe data, it doesn’t matter how big it is or if the network is slow. The CountStream class will dutifully count matches until the data has been processed..
+Created on 1662860150660
