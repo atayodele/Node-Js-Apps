@@ -76,6 +76,23 @@ TESTING IN NODE JS
         - add a file inside the folder,call it math.test.js     ==> to test for our math expressions
     - npm i supertest --save-dev      // to test an express application
 
+SHOPPING CART
+    - npm install -g express generator //install express globally to make use of expresson terminal
+    - express shopping-cart --hbs     // to create project using handlebars views
+    - cd shopping-cart
+    - npm install
+    - npm start
+    - localhost:3000 on your browser
+    - npm install --save express-handlebars
+    - Goto app.js and and add express-handlebars there, i.e
+        - var expressHsb = require('express-handlebars');
+    - Replace app.set('views', path.join(__dirname, 'views')); WITH
+        - app.engine('.hbs', expressHbs.engine({defaultLayout: 'layout', extname: '.hbs'}));
+                                        OR
+        - app.engine('.hbs', expressHbs.engine({layoutsDir: 'views/layouts/', defaultLayout: 'layout', extname: '.hbs'}));
+    - npm install mongoose --save
+
+
 SWAGGER IN NODE JS
     - npm i swagger-jsdoc swagger-ui-express -s
     
