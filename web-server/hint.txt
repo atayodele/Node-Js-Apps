@@ -1,3 +1,6 @@
+VS Code installation
+- material incon theme
+- 
 //  using npm
 run the command on ur project terminal
     - npm init // to install npm in our project
