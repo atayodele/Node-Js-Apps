@@ -4,11 +4,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressHbs = require('express-handlebars');
-require('./db/mongoose')
+var session = require('express-session');
+var passport = require('passport');
+var flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
+const { use } = require('./routes/index');
 
 var app = express();
+
+require('./db/mongoose');
+require('./config/passport');
 
 // view engine setup
 app.engine('.hbs', 
@@ -25,6 +31,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({ secret: 'mysupersecret', resave: false, saveUninitialized: false }))
+app.use(flash())
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);

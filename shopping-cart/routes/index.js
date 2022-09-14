@@ -1,6 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var product = require('../models/product')
+const express = require('express');
+const router = express.Router();
+const csrf = require('csurf')
+const passport = require('passport')
+const product = require('../models/product')
+
+var csrfProtection = csrf()
+router.use(csrfProtection)
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -13,6 +18,18 @@ router.get('/', function(req, res, next) {
       console.log(productChunks)
       res.render('shop/index', { title: 'Shopping Cart', products: productChunks });
   });
+});
+
+router.get('/user/signup', function(req, res, next) {
+   res.render('user/signup', { title: 'Shopping Cart', csrfToken: req.csrfToken() });
+});
+router.post('/user/signup', passport.authenticate('local.signup', {
+  successRedirect: '/user/profile',
+  failureRedirect: '/user/signup',
+  failureFlash: true
+}));
+router.get('/user/profile', function(req, res, next) {
+  res.render('user/profile', { title: 'Shopping Cart' });
 });
 
 module.exports = router;
