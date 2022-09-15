@@ -1,5 +1,5 @@
 VS Code installation
-- material incon theme
+- material icon theme
 - 
 //  using npm
 run the command on ur project terminal
@@ -101,4 +101,11 @@ SHOPPING CART
 
 SWAGGER IN NODE JS
     - npm i swagger-jsdoc swagger-ui-express -s
-    
+
+JOBBEE - API
+    - npm init -y
+    - npm i express
+    - npm i express dotenv --save
+    - npm i nodemon --save-dev
+    - npm i mongoose --save
+    - 
