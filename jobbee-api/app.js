@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
 const dotenv = require('dotenv');
 
@@ -20,14 +22,23 @@ process.on('uncaughtException', err => {
 //connecting to database
 connectDatabase();
 
+// Set up body parser
+app.use(bodyParser.urlencoded({ extended : true }));
+
 // Setup body parser
 app.use(express.json());
 
+// Set cookie parser
+app.use(cookieParser());
+
 // Importing all routes
 const jobs = require('./routes/jobs');
+const auth = require('./routes/auth');
+// const user = require('./routes/user');
 
-
-app.use('/api/v1/', jobs);
+app.use('/api/v1', jobs);
+app.use('/api/v1', auth);
+// app.use('/api/v1', user);
 
 // Handle unhandled routes
 app.all('*', (req, res, next) => {

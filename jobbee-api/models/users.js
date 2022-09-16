@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     role : {
         type : String,
         enum : {
-            values : ['user', 'employeer'],
+            values : ['user', 'employeer', 'admin'],
             message : 'Please select correct role'
         },
         default : 'user'
@@ -53,7 +53,8 @@ userSchema.pre('save', async function(next) {
 
 // Return JSON Web Token
 userSchema.methods.getJwtToken = function() {
-    return jwt.sign({ id : this._id}, process.env.JWT_SECRET, {
+    return jwt.sign({ id : this._id, fullname : this.name, email : this.email },
+         process.env.JWT_SECRET, {
         expiresIn : process.env.JWT_EXPIRES_TIME
     });
 }
@@ -75,7 +76,7 @@ userSchema.methods.getResetPasswordToken = function() {
             .digest('hex');
 
     // Set token expire time
-    this.resetPasswordExpire = Date.now() + 30*60*1000;
+    this.resetPasswordExpire = Date.now() + 30*60*1000; //30 mins
 
     return resetToken;
 }

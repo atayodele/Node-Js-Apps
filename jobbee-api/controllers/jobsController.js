@@ -39,6 +39,8 @@ exports.getJob = catchAsyncErrors(async (req, res, next) => {
 
 // Create a new Job   =>  /api/v1/job/create
 exports.newJob = catchAsyncErrors(async (req, res, next) => {
+    // Adding user to body
+    req.body.user = req.user.id;
 
     const job = await Job.create(req.body);
 
@@ -55,6 +57,11 @@ exports.updateJob = catchAsyncErrors(async (req, res, next) => {
 
     if (!job) {
         return next(new ErrorHandler('Job not found', 404));
+    }
+
+    // Check if the user is owner
+    if (job.user.toString() !== req.user.id && req.user.role !== 'admin') {
+        return next(new ErrorHandler(`User(${req.user.id}) is not allowed to update this job.`))
     }
 
     job = await Job.findByIdAndUpdate(req.params.id, req.body, {
@@ -77,6 +84,11 @@ exports.deleteJob = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler('Job not found', 404));
     }
     
+    // Check if the user is owner
+    if (job.user.toString() !== req.user.id && req.user.role !== 'admin') {
+        return next(new ErrorHandler(`User(${req.user.id}) is not allowed to delete this job.`))
+    }
+
     job = await Job.findByIdAndDelete(req.params.id);
 
     res.status(200).json({
