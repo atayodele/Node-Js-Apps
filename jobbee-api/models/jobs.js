@@ -115,11 +115,11 @@ const jobSchema = new mongoose.Schema({
         type : [Object],
         select : false
     },
-    // user : {
-    //     type : mongoose.Schema.ObjectId,
-    //     ref : 'User',
-    //     required : true
-    // }
+    user : {
+        type : mongoose.Schema.ObjectId,
+        ref : 'User',
+        required : true
+    }
 });
 
 // Creating Job Slug before saving
@@ -144,6 +144,5 @@ jobSchema.pre('save', async function(next) {
         country : loc[0].countryCode
     }
 });
-
 
 module.exports = mongoose.model('Job', jobSchema);

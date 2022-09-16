@@ -108,4 +108,5 @@ JOBBEE - API
     - npm i express dotenv --save
     - npm i nodemon --save-dev
     - npm i mongoose --save
-    - 
+    - to get group of statics, run this
+        db.jobs.createIndex({title: "text"}) in mongodb
