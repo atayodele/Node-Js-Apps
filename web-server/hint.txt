@@ -103,7 +103,7 @@ SWAGGER IN NODE JS
     - npm i swagger-jsdoc swagger-ui-express -s
 
 JOBBEE - API
-    - npm init -y
+    - npm init -y    
     - npm i express
     - npm i express dotenv --save
     - npm i nodemon --save-dev
@@ -116,4 +116,4 @@ JOBBEE - API
     - npm i xss-clean --save        //middleware to sanitize user input coming from POST body, GET query and url params
     - npm i hpp --save          //middleware to protect against HTTP Parameter Pollution attacks
     - npm i cors --save         // cross origin
-    
+       
