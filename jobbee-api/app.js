@@ -2,6 +2,13 @@ const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xssClean = require('xss-clean');
+const hpp = require('hpp');
+const cors = require('cors');
 
 const dotenv = require('dotenv');
 
@@ -22,8 +29,13 @@ process.on('uncaughtException', err => {
 //connecting to database
 connectDatabase();
 
+// Setup security headers
+app.use(helmet());
+
 // Set up body parser
 app.use(bodyParser.urlencoded({ extended : true }));
+
+app.use(express.static('public'));
 
 // Setup body parser
 app.use(express.json());
@@ -31,19 +43,45 @@ app.use(express.json());
 // Set cookie parser
 app.use(cookieParser());
 
+// Handle file uploads
+app.use(fileUpload());
+
+// Sanitize data
+app.use(mongoSanitize());
+
+// Prevent XSS attacks
+app.use(xssClean());
+
+// Prevent Parameter Pollution
+app.use(hpp({
+    whitelist: ['positions']
+}));
+
+// Rate Limiting
+const limiter = rateLimit({
+    windowMs: 10*60*1000, //10 Mints
+    max : 100
+});
+
+// Setup CORS - Accessible by other domains
+app.use(cors());
+
+app.use(limiter);
+
 // Importing all routes
 const jobs = require('./routes/jobs');
 const auth = require('./routes/auth');
-// const user = require('./routes/user');
+const user = require('./routes/user');
 
 app.use('/api/v1', jobs);
 app.use('/api/v1', auth);
-// app.use('/api/v1', user);
+app.use('/api/v1', user);
 
 // Handle unhandled routes
 app.all('*', (req, res, next) => {
     next(new ErrorHandler(`${req.originalUrl} route not found`, 404));
 });
+
 
 // Middleware to handle errors
 app.use(errorMiddleware);
