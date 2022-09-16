@@ -110,3 +110,10 @@ JOBBEE - API
     - npm i mongoose --save
     - to get group of statics, run this
         db.jobs.createIndex({title: "text"}) in mongodb
+    - npm i express-rate-limit --save   // to reduce the rate of accessing the endpoint at a specific period of time.
+    - npm i helmet --save      //setting security HTTP headers
+    - npm i express-mongo-sanitize --save       // middleware which sanitizes user-suppled data to prevent MongoDB Operator
+    - npm i xss-clean --save        //middleware to sanitize user input coming from POST body, GET query and url params
+    - npm i hpp --save          //middleware to protect against HTTP Parameter Pollution attacks
+    - npm i cors --save         // cross origin
+    
