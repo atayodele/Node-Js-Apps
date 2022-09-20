@@ -7,7 +7,7 @@ const genreSchema = new mongoose.Schema({
         unique : true
     },
     movies : {
-        type : mongoose.Schema.ObjectId,
+        type : [mongoose.Schema.ObjectId]
     },
     createdAt : {
         type : Date,

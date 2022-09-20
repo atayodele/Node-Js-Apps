@@ -1,4 +1,5 @@
 const Movie = require('../models/movie');
+const Genre = require('../models/genre');
 const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
 const ErrorHandler = require('../utils/errorHandler');
 const APIFilters = require('../utils/apiFilters');
@@ -6,6 +7,7 @@ const APIFilters = require('../utils/apiFilters');
 // Post Movie   =>    /api/v1/movie
 exports.postMovie = catchAsyncErrors( async(req, res, next) => {
     let movie = await Movie.findOne({title: req.body.title, type: req.body.type});
+    console.log(movie);  
     if(movie) return next(new ErrorHandler(`Movie already exist with this title ${req.body.title}`, 400));
 
     movie = new Movie(req.body);
