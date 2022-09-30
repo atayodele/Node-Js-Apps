@@ -1,1 +1,0 @@
-When you pipe data, it doesn’t matter how big it is or if the network is slow. The CountStream class will dutifully count matches until the data has been processed.
